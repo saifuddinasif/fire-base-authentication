@@ -39,7 +39,7 @@ const [user , setUser] = useState({});
      .catch(() => {
 
       setUser({});
-      
+
      })
 
   }
@@ -50,13 +50,20 @@ const [user , setUser] = useState({});
 
   return (
     <div className="App">
-       <button onClick={handleGoogleSignIn}>GOOGLE SIGN IN </button>
+     {    user.email ? 
        <button onClick={handleGoogleSignOut}>GOOGLE SIGN out </button>
+      :    <button onClick={handleGoogleSignIn}>GOOGLE SIGN IN </button>
+      
+     }
+          {
+            user.email &&
+                <div>
+                  <h4>user name : {user.displayName}</h4>
+                  <p>email : {user.email}</p>
+                  </div>
+          }
 
-        <h4>user name : {user.displayName}</h4>
-        <p>email : {user.email}</p>
-
-    </div>
+</div>
   );
 }
 
